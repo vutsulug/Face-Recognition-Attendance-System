@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Attendance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Attendance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.DisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.DisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckInDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckInDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckOutDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckOutDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayMessage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AttendanceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

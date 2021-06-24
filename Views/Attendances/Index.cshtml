@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication1.Models.Attendance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Attendance Management View</h2>
+
+<p style="margin-top:25px;margin-bottom:25px;font-size:medium">
+    @Html.ActionLink("Create New Attendance", "Create")
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("View Employees", "Index", "Employees")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckInDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOutDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayMessage)
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Employee.EmployeeCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Employee.EmailAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CheckInDateTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CheckOutDateTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DisplayMessage)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.AttendanceID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceID })
+    </td>
+</tr>
+}
+
+</table>
