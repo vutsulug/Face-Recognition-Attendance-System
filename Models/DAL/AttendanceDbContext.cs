@@ -15,6 +15,8 @@ namespace WebApplication1.Models
 
         public DbSet<Attendance> Attendance { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<ImageStore> ImageStore { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -3,9 +3,153 @@
 }
 
 <div style="margin-top:5%">
-    <img src="~/images/Jason Statum.jpg" style="height:30%;width:50%" alt="Jason Statum">
+    <video id="player" controls autoplay></video>
+    <canvas id="canvas" width=320 height=240 style="padding-left:20px"></canvas>
+    <hr/>
+    <button id="capture" type="button" class="btn-primary" style="border-radius:5px">Capture</button>
+    <button id="verify" type="button" class="btn-success" style="border-radius:5px">Verify</button>
+    <script>
+        const player = document.getElementById('player');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const captureButton = document.getElementById('capture');
+        const verify = document.getElementById('verify');
+
+        verify.hidden = true;
+        const constraints = {
+            video: false,
+        };
+
+        captureButton.addEventListener('click', () => {
+            // Draw the video frame to the canvas.
+            context.drawImage(player, 0, 0, canvas.width, canvas.height);
+            verify.hidden = false;
+        });
+
+        // Attach the video stream to the video element and autoplay.
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+                player.srcObject = stream;
+            });
+    </script>
+
 </div>
-<div style="margin-top:1%">
+
+
+@*<div class="contentarea">
+    <h1>
+        Using Javascript to capture Photo
+    </h1>
+    <div class="camera">
+        <video id="video">Video stream not available.</video>
+    </div>
+    <div><button id="startbutton">Take photo</button></div>
+
+    <canvas id="canvas"></canvas>
+    <div class="output">
+        <img id="photo" alt="The screen capture will appear in this box.">
+    </div>
+</div>*@
+
+
+
+
+@*<video id="player" controls></video>
+    <script>
+        var player = document.getElementById('player');
+
+        var handleSuccess = function (stream) {
+            player.srcObject = stream;
+        };
+
+        navigator.mediaDevices.getUserMedia({video: true })
+            .then(handleSuccess)
+    </script>
+    <hr/>
+    <input type="file" accept="video/*" capture="camera" id="recorder">
+    <video id="player" controls></video>
+    <script>
+        var recorder = document.getElementById('recorder');
+        var player = document.getElementById('player');
+
+        recorder.addEventListener('change', function (e) {
+            var file = e.target.files[0];
+            // Do something with the video file.
+            player.src = URL.createObjectURL(file);
+        });
+    </script>*@
+@*<img src="~/images/Jason Statum.jpg" style="height:30%;width:50%" alt="Jason Statum">
+    </div>
+    <div style="margin-top:1%">*@
+
+@*<input type="file" accept="video/*">
     <button style="margin-left:50px;border-radius:5px;color:darkblue">CAPTURE</button>
-    <button style="margin-left:50px;border-radius:5px;color:green">VERIFY</button>
-</div>
+    <button style="margin-left:50px;border-radius:5px;color:green">VERIFY</button>*@
+
+
+@*<script>
+    function takepicture() {
+        var context = canvas.getContext('2d');
+        if (width && height) {
+            canvas.width = width;
+            canvas.height = height;
+            context.drawImage(video, 0, 0, width, height);
+
+            var data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        } else {
+            clearphoto();
+        }
+    }
+    function startup() {
+        video = document.getElementById('video');
+        canvas = document.getElementById('canvas');
+        photo = document.getElementById('photo');
+        startbutton = document.getElementById('startbutton');
+
+        // access video stream from webcam
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+        })
+            // on success, stream it in video tag
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (err) {
+                console.log("An error occurred: " + err);
+            });
+
+        video.addEventListener('canplay', function (ev) {
+            if (!streaming) {
+                height = video.videoHeight / (video.videoWidth / width);
+
+                if (isNaN(height)) {
+                    height = width / (4 / 3);
+                }
+
+                video.setAttribute('width', width);
+                video.setAttribute('height', height);
+                canvas.setAttribute('width', width);
+                canvas.setAttribute('height', height);
+                streaming = true;
+            }
+        }, false);
+
+        startbutton.addEventListener('click', function (ev) {
+            takepicture();
+            ev.preventDefault();
+        }, false);
+
+        clearphoto();
+    }
+    function clearphoto() {
+        var context = canvas.getContext('2d');
+        context.fillStyle = "#AAA";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        var data = canvas.toDataURL('image/png');
+        photo.setAttribute('src', data);
+    }
+</script>*@

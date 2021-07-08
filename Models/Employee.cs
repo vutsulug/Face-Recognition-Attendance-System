@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class Employee
+    public class Employee : Admin
     {
         [Key]
         public int EmployeeID { get; set; }
@@ -17,6 +18,7 @@ namespace WebApplication1.Models
         public string CellNumber { get; set; }
         public bool IsDeleted { get; set; }
         public string DisplayName { get; set; }
+        public string EmployeePhoto { get; set; }
 
         public string EmployeeCode { get; set; }
         //public LoginType LoginType { get; set; }
