@@ -20,10 +20,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="padding-left:700px">
-                    <li>@Html.ActionLink("Admin Login", "Index", "Attendances")</li>
+                 
                     @*<li>@Html.ActionLink("Attendances", "Index", "Attendances")</li>
         <li>@Html.ActionLink("Employees", "Index", "Employees")</li>*@
 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Admin Login", "Login", "Accounts")</li>
                 </ul>
             </div>
         </div>
@@ -35,9 +38,11 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    <script src="~/Scripts/angular.min.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("NgScript",false)
 </body>
 </html>

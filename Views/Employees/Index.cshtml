@@ -5,13 +5,26 @@
 }
 
 <h2>Employee Management View </h2>
+<ul class="nav navbar-nav navbar-right">
 
-<p style="margin-top:25px;margin-bottom:25px;font-size:medium">
-    @Html.ActionLink("Create New Employee", "Create")
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("View Employee Attendance", "Index", "Attendances")
-</p>
-<table class="table">
+  <li>
+    <h4>
+        <u>
+            <strong>@Html.ActionLink("Add New Employee", "Create") </strong>
+        </u>
+        </h4 >
+    </li>
+    <li style="padding-left:25px">
+        <h4>
+            <u>
+                <strong>@Html.ActionLink("Back to Attendance View", "Index", "Attendances")</strong>
+            </u>
+         </h4>
+    </li>
+</ul>
+
+
+<table class="table" style="margin-top:8%;margin-bottom:8%">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.EmployeeCode)
@@ -31,35 +44,39 @@
         <th>
             @Html.DisplayNameFor(model => model.DisplayName)
         </th>
+        <th>
+           Actions
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.EmployeeCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EmailAddress)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Surname)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CellNumber)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DisplayName)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+            </td>
+        </tr>
+    }
 
 </table>

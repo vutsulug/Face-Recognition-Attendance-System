@@ -5,14 +5,31 @@
 }
 
 <h2>Employee Attendance Management View</h2>
+<ul class="nav navbar-nav navbar-right">
 
-<p style="margin-top:25px;margin-bottom:25px;font-size:medium">
+    <li>
+        <h4>
+            <u>
+                <strong>@Html.ActionLink("Add New Attendance", "Create") </strong>
+            </u>
+        </h4>
+    </li>
+    <li style="padding-left:25px">
+        <h4>
+            <u>
+                <strong>@Html.ActionLink("View Employee List", "Index", "Employees")</strong>
+            </u>
+        </h4>
+    </li>
+</ul>
+
+@*<p style="margin-top:25px;margin-bottom:25px;font-size:medium">
     @Html.ActionLink("Create New Attendance", "Create")
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     @Html.ActionLink("View Employees", "Index", "Employees")
-</p>
+</p>*@
 
-<table class="table">
+<table class="table" style="margin-top:8%;margin-bottom:8%">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Employee.EmployeeCode)

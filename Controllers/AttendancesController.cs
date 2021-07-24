@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -38,10 +39,11 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Attendances/Create
-        public ActionResult Create()
+        public ActionResult Create(string returnUrl = "")
         {
+            var model = new AttendanceViewModel { ReturnUrl = returnUrl };
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "EmployeeCode");
-            return View();
+            return View(model);
         }
 
         // POST: Attendances/Create
@@ -49,11 +51,17 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "AttendanceID,EmployeeID,CheckInDateTime,CheckOutDateTime,DisplayMessage")] Attendance attendance)
+        public async Task<ActionResult> Create(AttendanceViewModel attendance)
         {
             if (ModelState.IsValid)
             {
-                db.Attendance.Add(attendance);
+                var item = new Attendance();
+                item.CheckInDateTime = attendance.CheckInDateTime;
+                item.CheckOutDateTime = attendance.CheckOutDateTime;
+                item.DisplayMessage = attendance.DisplayMessage;
+                item.EmployeeID = attendance.EmployeeID;
+                
+                db.Attendance.Add(item);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

@@ -22,12 +22,14 @@
             new Attendance() { AttendanceID = 4, CheckInDateTime = DateTime.UtcNow, DisplayMessage = "Right on time", EmployeeID = 3, CheckOutDateTime = DateTime.UtcNow, IsDeleted = false },
             new Attendance() { AttendanceID = 5, CheckInDateTime = DateTime.UtcNow, DisplayMessage = "Right on time", EmployeeID = 4, CheckOutDateTime = DateTime.UtcNow,IsDeleted=false });
 
+            //context.Admin.AddOrUpdate(x => x.AdminID,
+            //new Admin() { AdminID = 100, FirstName = "Simon", Surname = "Jimp", CellNumber = "0756368545", EmailAddress = "Lee.Anderson@email.com", IsDeleted = false, EmployeeID = 6, DisplayName = "Lee Anderson", EmployeeCode = "B68909", Password = "#Advenchy829", ConfirmPassword = "#Advenchy829" ,UserName= "Lee.Anderson@email.com" });
 
             context.Employees.AddOrUpdate(x => x.EmployeeID,
             new Employee { FirstName = "Carson", Surname = "Alexander", CellNumber = "0756368545", EmailAddress = "Carson.Alexander@email.com", IsDeleted = false, EmployeeID = 1,DisplayName= "Carson Alexander",EmployeeCode = "G63787" },
             new Employee { FirstName = "Mike", Surname = "Blank", CellNumber = "0756368545", EmailAddress = "Mike.Blank@email.com", IsDeleted = false, EmployeeID = 2,DisplayName="Mike Blank",EmployeeCode="C63987" },
             new Employee { FirstName = "Jane", Surname = "Sanders", CellNumber = "0756368545", EmailAddress = "Jane.Sanders@email.com", IsDeleted = false, EmployeeID = 3,DisplayName="Jane Sanders",EmployeeCode="M34125" },
-            new Employee { FirstName = "Simon", Surname = "Jimp", CellNumber = "0756368545", EmailAddress = "Simon.Jimp@email.com", IsDeleted = false, EmployeeID = 4,DisplayName="Simon Jimp",EmployeeCode="A20045" },
+            new Employee { FirstName = "Simon", Surname = "Jimp", CellNumber = "0756368545", EmailAddress = "Simon.Jimp@email.com", IsDeleted = false, EmployeeID = 4,DisplayName="Simon Jimp",EmployeeCode="A20045", Password = "#Advenchy829", ConfirmPassword = "#Advenchy829", UserName = "Lee.Anderson@email.com" },
             new Employee { FirstName = "Linda", Surname = "McGru", CellNumber = "0756368545", EmailAddress = "Linda.Mcgru@email.com", IsDeleted = false, EmployeeID = 5,DisplayName="Linda McGru",EmployeeCode="Y96532" });
         
     }
