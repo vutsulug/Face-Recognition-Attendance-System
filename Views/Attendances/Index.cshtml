@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Employee Attendance Management View</h2>
+<h2>Employee Attendance Management</h2>
 <ul class="nav navbar-nav navbar-right">
 
     <li>
@@ -24,56 +24,53 @@
 </ul>
 
 @*<p style="margin-top:25px;margin-bottom:25px;font-size:medium">
-    @Html.ActionLink("Create New Attendance", "Create")
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("View Employees", "Index", "Employees")
-</p>*@
+        @Html.ActionLink("Create New Attendance", "Create")
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.ActionLink("View Employees", "Index", "Employees")
+    </p>*@
 
-<table class="table" style="margin-top:8%;margin-bottom:8%">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.EmployeeCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.EmailAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckInDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckOutDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisplayMessage)
-        </th>
-        <th>
-            Actions
-        </th>
-    </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Employee.EmployeeCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Employee.EmailAddress)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CheckInDateTime)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CheckOutDateTime)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DisplayMessage)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.AttendanceID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceID })
-    </td>
-</tr>
-}
 
-</table>
+<div class="card-header" style="margin-top:8%;margin-bottom:8%">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Employee.EmployeeCode)</th>
+                    <th>@Html.DisplayNameFor(model => model.Employee.EmailAddress)</th>
+                    <th>@Html.DisplayNameFor(model => model.CheckInDateTime)</th>
+                    <th>@Html.DisplayNameFor(model => model.CheckOutDateTime)</th>
+                    <th>@Html.DisplayNameFor(model => model.DisplayMessage)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.EmployeeCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.EmailAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CheckInDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CheckOutDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayMessage)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceID }, new { @class = "btn btn-primary" })  |
+                            @Html.ActionLink("Details", "Details", new { id = item.AttendanceID }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
